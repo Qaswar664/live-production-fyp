@@ -68,8 +68,11 @@ const CartPage = () => {
         cart,
       });
       setLoading(false);
+      
+      // Clear the cart here
+      setCart({});
       localStorage.removeItem("cart");
-      setCart([]);
+  
       navigate("/dashboard/user/orders");
       toast.success("Payment Completed Successfully ");
     } catch (error) {
@@ -77,6 +80,7 @@ const CartPage = () => {
       setLoading(false);
     }
   };
+  
   return (
     <Layout>
       <div className=" cart-page">
