@@ -5,11 +5,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
+import { NavLink, Link } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
-  const [formErrors, setFormErrors] = useState({ email: false, password: false });
+  const [formErrors, setFormErrors] = useState({
+    email: false,
+    password: false,
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,7 +63,7 @@ const Login = () => {
         }
       } catch (error) {
         console.log(error);
-        toast.error("Something went wrong");
+        toast.error("invalid credentials or user don't have an account");
       }
     }
   };
@@ -67,7 +72,10 @@ const Login = () => {
     <Layout title="Login - Ecommer App">
       <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
-          <h4 className="title">LOGIN FORM</h4>
+          <p className="title text-dark">
+            Welcome Back<br></br>
+            to <span className="al_jannat_mall">e-commerce store</span>
+          </p>
 
           <div className="mb-3">
             <input
@@ -103,7 +111,7 @@ const Login = () => {
           <div className="mb-3">
             <button
               type="button"
-              className="btn forgot-btn"
+              className="btn forgot-btn btn btn-info w-100"
               onClick={() => {
                 navigate("/forgot-password");
               }}
@@ -112,9 +120,16 @@ const Login = () => {
             </button>
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="forgot-btn btn btn-info w-100 mb-1">
             LOGIN
           </button>
+          <p className="d-flex">
+            don't have an account
+            {/* <span className="al_jannat_mall">register-now</span>  */}
+            <NavLink to="/register" className="ms-2 text-decoration-none">
+              register-now
+            </NavLink>
+          </p>
         </form>
       </div>
     </Layout>

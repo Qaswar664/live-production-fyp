@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
+import { NavLink} from "react-router-dom";
+
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -98,7 +100,12 @@ const Register = () => {
     <Layout title="Register - Ecommer App">
       <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
-          <h4 className="title">REGISTER FORM</h4>
+        <p className="title text-dark">create-your<br></br>
+           <span className="al_jannat_mall">
+          account
+            </span> 
+          
+          </p>
           <div className="mb-3">
             <input
               type="text"
@@ -186,9 +193,16 @@ const Register = () => {
               <div className="invalid-feedback">Answer is not valid</div>
             )}
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="forgot-btn btn btn-info w-100 mb-1">
             REGISTER
           </button>
+          <p className="d-flex">
+            already have an account
+            {/* <span className="al_jannat_mall">register-now</span>  */}
+            <NavLink to="/login" className="ms-2 text-decoration-none">
+              login-now
+            </NavLink>
+          </p>
         </form>
       </div>
     </Layout>
